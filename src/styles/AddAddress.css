@@ -1,0 +1,54 @@
+.header h1 {
+  font-size: 2rem;
+  color: #1a0710;
+  margin-bottom: 3rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="address"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.flex-container input {
+  flex: 1;
+}
+
+.button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Responsive: Mobile */
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+}

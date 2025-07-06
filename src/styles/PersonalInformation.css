@@ -1,0 +1,153 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  text-align: left;
+  color: #1a0710;
+  margin-bottom: 2rem;
+}
+
+.form .gender {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.form .gender label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.form .note {
+  display: flex;
+  align-items: center;
+  color: #1a0710;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.note p {
+  font-size: 14px;
+  font-family: 700;
+  color: #1a0710;
+  margin-left: 10px;
+  line-height: 1.5;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+.country-code select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  color: #3c3c3c;
+  cursor: pointer;
+  width: 100px;
+}
+
+.phone-number-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  color: #3c3c3c;
+}
+
+.input-container input[type="date"],
+.input-container input[type="text"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form p {
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 1;
+
+  margin-top: 0.5rem;
+}
+.input-container .birthday {
+  width: 100%;
+}
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 95%;
+}
+
+.react-datepicker__input-container input {
+  width: 100% !important;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+@media (min-width: 601px) {
+  .contact {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-bg {
+    padding: 1.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .form .gender {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .note p {
+    font-size: 13px;
+  }
+
+  .phone-input-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .country-code select {
+    width: 100%;
+  }
+
+  .phone-number-input {
+    width: 100%;
+  }
+}
