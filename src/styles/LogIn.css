@@ -1,0 +1,145 @@
+.hero-bg p {
+  font-size: 20px;
+  color: #1a0710;
+  opacity: 0.3;
+}
+
+.icon-bg {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.icon-container {
+  background-color: #f6f6f6;
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-container:hover {
+  background-color: #e0e0e0;
+}
+
+.hero-content {
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-container,
+.password-container {
+  position: relative;
+}
+
+.input-container input,
+.password-container input {
+  width: 87%;
+  padding: 14px 45px 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Commissioner", sans-serif;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-container input:focus,
+.password-container input:focus {
+  border: 1px solid #6a0dad;
+  box-shadow: 0 0 0 2px rgba(106, 13, 173, 0.1);
+  outline: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: green;
+}
+
+.password-container .checkmark {
+  right: 40px;
+}
+
+.toggle-visibility {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #4b3f4e;
+}
+
+.check-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.check-box label {
+  opacity: 0.3;
+}
+
+.registration-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.registration-footer p {
+  font-size: 14px;
+  color: #1a0710;
+  opacity: 0.5;
+}
+
+.registration-footer p a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.registration-footer p a:hover {
+  color: darkblue;
+  text-decoration: none;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 480px) {
+  .hero-bg {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .hero-bg p {
+    font-size: 16px;
+  }
+
+  .input-container input,
+  .password-container input {
+    font-size: 14px;
+    padding: 12px 40px 12px 12px;
+  }
+
+  .toggle-visibility {
+    font-size: 18px;
+    right: 8px;
+  }
+
+  .password-container .checkmark {
+    right: 35px;
+  }
+
+  .checkmark {
+    font-size: 16px;
+  }
+}

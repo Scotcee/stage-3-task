@@ -1,16 +1,22 @@
-import React, { use } from "react";
-import { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Registration.css";
 import { FaApple, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../components/Button";
+import { signUp, googleSignIn } from "../firebase/auth";
 
 function Registration() {
   const [showPassword, setShowPassword] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const location = useLocation();
+  const navigate = useNavigate();
+  const isRegistrationPage = location.pathname === "/";
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -18,32 +24,41 @@ function Registration() {
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
+    setEmail(value);
     setEmailValid(value.includes("@") && value.includes(".com"));
   };
 
   const handlePasswordChange = (e) => {
     const value = e.target.value;
+    setPassword(value);
     setPasswordValid(value.length >= 8);
   };
 
-  // Check if the current page is the registration page
-  const isRegistrationPage = location.pathname === "/";
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await signUp(email, password);
+      console.log("Signed up:", user);
+      navigate("/personal-information");
+    } catch (err) {
+      alert("Signup failed: " + err.message);
+    }
+  };
+  const handleGoogleSignIn = (e) => {
+    e.preventDefault();
+    googleSignIn()
+      .then((newUser) => {
+        console.log("Google Sign In successful:", newUser);
+        navigate("/personal-information");
+      })
+      .catch((err) => {
+        alert("Google Sign In failed: " + err.message);
+      });
+  };
 
   return (
     <div>
-      {/* <div className="step-indicator">
-        <p>
-          Step {currentStep} of {totalSteps}
-        </p>
-        <div className="progress-bar-container">
-          <div
-            className="progress-bar"
-            style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-          ></div>
-        </div>
-      </div> */}
-
-      {isRegistrationPage ? (
+      {isRegistrationPage && (
         <div className="hero-bg">
           <div className="icon-bg">
             <div className="icon-container">
@@ -53,11 +68,13 @@ function Registration() {
               <FaFacebook size={30} color="blue" />
             </div>
             <div className="icon-container">
-              <FcGoogle size={30} />
+              <a href="#" onClick={handleGoogleSignIn}>
+                <FcGoogle size={30} />
+              </a>
             </div>
           </div>
 
-          <form action="">
+          <form onSubmit={handleSignUp}>
             <div className="hero-content">
               <p>or register with email</p>
 
@@ -67,6 +84,7 @@ function Registration() {
                     type="email"
                     placeholder="Email address"
                     onChange={handleEmailChange}
+                    value={email}
                   />
                   {emailValid && <span className="checkmark">✔️</span>}
                 </div>
@@ -76,6 +94,7 @@ function Registration() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     onChange={handlePasswordChange}
+                    value={password}
                   />
                   {passwordValid && <span className="checkmark">✔️</span>}
                   <span
@@ -86,11 +105,9 @@ function Registration() {
                   </span>
                 </div>
 
-                <Link to="/personal-information">
-                  <Button onClick={() => console.log("Button clicked")}>
-                    Create Account
-                  </Button>
-                </Link>
+                <Button type="submit" disabled={!emailValid || !passwordValid}>
+                  Create Account
+                </Button>
               </div>
 
               <div className="check-box">
@@ -108,7 +125,8 @@ function Registration() {
             </p>
           </div>
         </div>
-      ) : null}
+      )}
+
       <Outlet />
     </div>
   );

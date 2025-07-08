@@ -5,6 +5,8 @@ import Address from "./pages/Address";
 import AddAddress from "./pages/AddAddress";
 import SuccessPage from "./pages/SuccessPage";
 import LogIn from "./pages/LogIn";
+import Dashboard from "./pages/dashboard/Dashboard";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 import "./App.css";
 
 function App() {
@@ -20,7 +22,18 @@ function App() {
           <Route path="add-address" element={<AddAddress />} />
           <Route path="success" element={<SuccessPage />} />
         </Route>
-        <Route path="*" element={<LogIn />} />
+
+        <Route path="/login" element={<LogIn />} />
+
+        {/* Move dashboard to root-level */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoutes>
+              <Dashboard />
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
