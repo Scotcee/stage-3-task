@@ -1,19 +1,21 @@
-// Import the functions you need from the SDKs you need
+// src/firebase.js
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import firebasekey from "../firebasekey.json";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASXed1K2uOHXHyxuKjTY7KGiBOk2ght4k",
-  authDomain: "kode-camp-5.firebaseapp.com",
-  projectId: "kode-camp-5",
-  storageBucket: "kode-camp-5.firebasestorage.app",
-  messagingSenderId: "1049917831462",
-  appId: "1:1049917831462:web:5e19d6ff406979e004a9e7",
-  measurementId: "G-RNQFJH96D5",
+  apiKey: firebasekey.apiKey,
+  authDomain: firebasekey.authDomain,
+  projectId: firebasekey.projectId,
+  storageBucket: firebasekey.storageBucket,
+  messagingSenderId: "1049917831462", // hardcoded or move to firebasekey if needed
+  appId: firebasekey.appId,
+  measurementId: firebasekey.measurementId,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { app, auth };
+export { app, auth, db };
