@@ -7,11 +7,16 @@ import { TbCurrencyNaira } from "react-icons/tb";
 import Button from "../components/Button";
 
 function Address() {
+  const pages = ["/", "/personal-information", "/address", "/add-address"];
+  const currentPageIndex = pages.indexOf(location.pathname);
+  const pageNumber = currentPageIndex !== -1 ? currentPageIndex + 1 : "?";
+  const totalPages = pages.length;
   return (
     <div>
       <div className="hero-bg">
         <div className="header">
           <h1>Add Address</h1>
+          <p>{`${pageNumber} / ${totalPages} `}</p>
         </div>
         <form action="submit">
           <input

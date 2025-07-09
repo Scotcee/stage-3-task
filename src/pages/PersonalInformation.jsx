@@ -8,11 +8,17 @@ import { Link } from "react-router-dom";
 
 function PersonalInformation() {
   const [startDate, setStartDate] = React.useState(null);
+
+  const pages = ["/", "/personal-information", "/address", "/add-address"];
+  const currentPageIndex = pages.indexOf(location.pathname);
+  const pageNumber = currentPageIndex !== -1 ? currentPageIndex + 1 : "?";
+  const totalPages = pages.length;
   return (
     <div>
       <div className="hero-bg">
         <div className="header">
           <h1>Personal Information</h1>
+          <p>{`${pageNumber} / ${totalPages} `}</p>
         </div>
         <div className="form">
           <form>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useLocation, useNavigate, Link } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, NavLink } from "react-router-dom";
 import "../styles/Registration.css";
 import { FaApple, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -10,7 +10,6 @@ function Registration() {
   const [showPassword, setShowPassword] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -44,6 +43,7 @@ function Registration() {
       alert("Signup failed: " + err.message);
     }
   };
+
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
     googleSignIn()
@@ -56,17 +56,40 @@ function Registration() {
       });
   };
 
+  const pages = ["/", "/personal-information", "/address", "/add-address"];
+  const currentPageIndex = pages.indexOf(location.pathname);
+  const pageNumber = currentPageIndex !== -1 ? currentPageIndex + 1 : "?";
+  const totalPages = pages.length;
+
   return (
     <div>
       {isRegistrationPage && (
         <div className="hero-bg">
           <header className="hero-header">
-            <ul>
+            <ul className="nav-links">
               <li>
-                <Link to="/login">Log In</Link>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => (isActive ? "active-link" : "")}
+                >
+                  Register
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) => (isActive ? "active-link" : "")}
+                >
+                  Log In
+                </NavLink>
               </li>
             </ul>
+
+            <div className="paging">
+              <p>{`${pageNumber} / ${totalPages} `}</p>
+            </div>
           </header>
+
           <div className="icon-bg">
             <div className="icon-container">
               <FaApple size={30} color="black" />

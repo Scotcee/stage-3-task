@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../styles/Registration.css";
 import { FaApple, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -55,6 +55,26 @@ function LogIn() {
 
   return (
     <div className="hero-bg">
+      <div className="header">
+        <ul className="nav-links">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+              Register
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+              Log In
+            </NavLink>
+          </li>
+        </ul>
+      </div>
       <div className="icon-bg">
         <div className="icon-container">
           <FaApple size={30} color="black" />

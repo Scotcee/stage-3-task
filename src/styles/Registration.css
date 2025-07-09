@@ -12,6 +12,43 @@
   color: #1a0710;
   opacity: 0.3;
 }
+/* Page.css */
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 0rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: flex-start;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+  transition: color 0.3s, border 0.3s;
+}
+
+.active-link {
+  color: black;
+  border-bottom: 2px solid #6a0dad;
+}
+
+.nav-links a:hover {
+  color: black;
+  border-bottom: 2px solid #6a0dad;
+}
+
+.paging p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
 .icon-bg {
   display: flex;
