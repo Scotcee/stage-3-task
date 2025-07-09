@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, Link } from "react-router-dom";
 import "../styles/Registration.css";
 import { FaApple, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -60,6 +60,13 @@ function Registration() {
     <div>
       {isRegistrationPage && (
         <div className="hero-bg">
+          <header className="hero-header">
+            <ul>
+              <li>
+                <Link to="/login">Log In</Link>
+              </li>
+            </ul>
+          </header>
           <div className="icon-bg">
             <div className="icon-container">
               <FaApple size={30} color="black" />
