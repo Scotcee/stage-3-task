@@ -123,7 +123,7 @@ header {
   padding: 0.4rem 0.8rem;
   border-radius: 10px;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 

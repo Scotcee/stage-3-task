@@ -16,6 +16,7 @@ import { HiOutlineUsers } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
 
 import { useAuth } from "../../context/AuthContext";
+import DashboardTable from "./components/DashboardTable";
 
 function Dashboard() {
   const { currentUser } = useAuth();
@@ -175,7 +176,9 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="all-customers"></div>
+          <div className="all-customers">
+            <DashboardTable />
+          </div>
         </div>
       </div>
     </div>
